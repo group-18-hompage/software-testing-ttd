@@ -51,9 +51,14 @@ public class calculatorTest {
     @Test // 두개 선언해서 곱해지는게 잘 되는지 확인
     public void multiplyTwoObject() {
         calculator calculator2 = new calculator();
-        calculator.add(2,3);
-        calculator2.multiply(2,4);
-        calculator.multiply((calculator.getResult()),calculator2.getResult());
+        calculator.add(2, 3);
+        calculator2.multiply(2, 4);
+        calculator.multiply((calculator.getResult()), calculator2.getResult());
         assertThat(calculator.getResult(), is(40));
+    }
+    @Test
+    public void cube() {
+        calculator.cube(3);
+        assertThat(calculator.getResult(),is(27));
     }
 }
