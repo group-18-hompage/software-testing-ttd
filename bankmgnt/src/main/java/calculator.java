@@ -22,6 +22,9 @@ public class calculator {
     public int square(int input) {
         return result = (input * input);
     }
+    public int cube(int input) {
+        return result = (input * input * input);
+    }
 
 
 }
