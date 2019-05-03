@@ -1,6 +1,7 @@
 import org.junit.Test;
 
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class calculatorTest {
@@ -29,18 +30,30 @@ public class calculatorTest {
         assertThat(calculator.getResult(), is(6));
     }
 
-    @Test // divide가 잘 실행되는지 확인인
+    @Test // divide가 잘 실행되는지 확인
     public void divide() {
-        calculator.divide(9, 3);
+        calculator.divide(9,3);
         assertThat(calculator.getResult(), is(3));
     }
 
-    @Test // 부피 구하기
-    public void temp(){
-        calculator.volume(3, 3, 3);
-        assertThat(calculator.getResult(), is(27));
+    @Test // reminder가 잘 실행되는지 확인
+    public void reminder() {
+        calculator.remainder(5, 2);
+        assertThat(calculator.getResult(), is(1));
+    }
 
-        calculator.volume(5);
-        assertThat(calculator.getAnswer(), is(78.5));
+    @Test // square가 잘 실행되는지 확인
+    public void square() {
+        calculator.square(5);
+        assertThat(calculator.getResult(), is(25));
+    }
+
+    @Test // 두개 선언해서 곱해지는게 잘 되는지 확인
+    public void multiplyTwoObject() {
+        calculator calculator2 = new calculator();
+        calculator.add(2,3);
+        calculator2.multiply(2,4);
+        calculator.multiply((calculator.getResult()),calculator2.getResult());
+        assertThat(calculator.getResult(), is(40));
     }
 }
