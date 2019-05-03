@@ -1,5 +1,9 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -59,6 +63,7 @@ public class AccountTest {
         assertThat(two.getBalance(), is(25000));
     }
 
+    // 계좌 생성
     @Test
     public void createAccount(){
         Account account = new Account("연우", 1000000);
@@ -66,5 +71,44 @@ public class AccountTest {
         assertThat(account.getOwner(), is("연우"));
     }
 
+    // 그룹 계좌
+    @Test
+    public void groupAccount_balance(){
+        Account group = new Account();
+
+        Account member1 = new Account("주연", 1000000);
+        Account member2 = new Account("현아", 1000000);
+        Account member3 = new Account("규진", 1000000);
+
+        group.groupAccount(member1, 500000);
+        group.groupAccount(member2, 1000000);
+        group.groupAccount(member3, 800000);
+
+        assertThat(group.getBalance(), is(2300000));
+        assertThat(member1.getBalance(), is(500000));
+        assertThat(member2.getBalance(), is(0));
+        assertThat(member3.getBalance(), is(200000));
+    }
+
+    // n빵 치기
+    @Test
+    public void divide_n(){
+        Account member1 = new Account("주연", 1000000);
+        Account member2 = new Account("현아", 10000000);
+        Account member3 = new Account("규진", 700000);
+        Account member4 = new Account("연우", 500000);
+
+        int money = 100000;
+
+        member1.divide_n_fairy(4, money);
+        member2.divide_n_fairy(4, money);
+        member3.divide_n_fairy(4, money);
+        member4.divide_n_fairy(4, money);
+
+        assertThat(member1.getBalance(), is(975000));
+        assertThat(member2.getBalance(), is(9975000));
+        assertThat(member3.getBalance(), is(675000));
+        assertThat(member4.getBalance(), is(475000));
+    }
 
 }
