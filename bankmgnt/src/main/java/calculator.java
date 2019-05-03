@@ -1,11 +1,9 @@
 public class calculator {
     private int result = 0;
-    private double answer = 0;
 
     public int getResult() {
         return result;
     }
-    public double getAnswer() {return answer; }
     public int add(int input1, int input2) {
         return result = (input1 + input2);
     }
@@ -18,6 +16,12 @@ public class calculator {
     public int divide(int input1, int input2) {
         return result = (input1 / input2);
     }
-    public int volume(int hor, int ver, int hei) { return result = (hor * ver * hei);}
-    public double volume(int r) {return answer = (3.14 * r * r);}
+    public int remainder(int input1, int input2) {
+        return result = (input1 % input2);
+    }
+    public int square(int input) {
+        return result = (input * input);
+    }
+
+
 }
