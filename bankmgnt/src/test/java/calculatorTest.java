@@ -51,14 +51,29 @@ public class calculatorTest {
     @Test // 두개 선언해서 곱해지는게 잘 되는지 확인
     public void multiplyTwoObject() {
         calculator calculator2 = new calculator();
-        calculator.add(2, 3);
-        calculator2.multiply(2, 4);
-        calculator.multiply((calculator.getResult()), calculator2.getResult());
+        calculator.add(2,3);
+        calculator2.multiply(2,4);
+        calculator.multiply((calculator.getResult()),calculator2.getResult());
         assertThat(calculator.getResult(), is(40));
     }
-    @Test
+    @Test // cube가 잘 실행되는지 확인
     public void cube() {
         calculator.cube(3);
         assertThat(calculator.getResult(),is(27));
+    }
+
+    @Test // triangle이 잘 실행되는지 확인
+    public void triangle() {
+        calculator.triangle(2,3);
+        assertThat(calculator.getResult(), is(3));
+    }
+
+    @Test // 임의의 두 함수를 실행해서 합해보는 테스트
+    public void spaceAdd() {
+        calculator calculator2 = new calculator();
+        calculator.square(3);
+        calculator2.triangle(4, 3);
+        calculator.add(calculator.getResult(),calculator2.getResult());
+        assertThat(calculator.getResult(),is(15));
     }
 }
