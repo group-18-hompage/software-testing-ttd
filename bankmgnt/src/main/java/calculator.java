@@ -1,6 +1,6 @@
 public class calculator {
     private int result = 0;
-
+    private double answer = 0;
     public int getResult() {
         return result;
     }
@@ -25,6 +25,8 @@ public class calculator {
     public int cube(int input) {
         return result = (input * input * input);
     }
-
+    public int triangle(int a, int b) {
+        return result = (1/2 * a * b);
+    }
 
 }
